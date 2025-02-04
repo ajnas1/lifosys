@@ -1,13 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-enum HomeStatus {
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:http/http.dart' as http;
+import 'package:lifosys_app/model/patientModel.dart';
+
+enum MainStatus {
   loading,
   loaded,
   error,
 }
 
-class HomeScreenViewmodel extends ChangeNotifier {
+class MainScreenViewmodel extends ChangeNotifier {
   int tabSelectedIndex = 1;
 
   //when user click on another tab
@@ -17,31 +21,36 @@ class HomeScreenViewmodel extends ChangeNotifier {
     notifyListeners();
   }
 
-  //  api call
-  HomeStatus homestatus = HomeStatus.loading;
-
-  Future<List<dynamic>?> fetchData(BuildContext context) async {
-    var data;
-    homestatus = HomeStatus.loading;
+  MainStatus mainstatus = MainStatus.error;
+  //  this function call the api and convert the json into dart object
+  Future<PatientModel?> fetchData() async {
     try {
-      final url = Uri.parse('');
-      final response = await http.get(url);
+      final url = Uri.parse('${dotenv.env['APIENDPOINT']}');
+      final response = await http.get(
+        url,
+        headers: {
+          'Authorization': 'Bearer ${dotenv.env['ACCESSTOKEN']}',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'ngrok-skip-browser-warning': '69420',
+        },
+      );
+
       if (response.statusCode == 200) {
-        print(response.body);
-        // return unSplashModelFromJson(response.body);
+        print('fsdhijfsdj');
+        final data = PatientModel.fromJson(jsonDecode(response.body));
+        mainstatus = MainStatus.loaded;
+        return data;
       } else {
-        homestatus = HomeStatus.error;
+        mainstatus = MainStatus.error;
+        print('Error: ${response.statusCode}');
+        print('Response: ${response.body}');
+        return null;
       }
     } catch (e) {
-      homestatus = HomeStatus.error;
+      mainstatus = MainStatus.error;
+      print('Exception occurred: $e');
+      return null;
     }
-
-    if (data == null) {
-      homestatus = HomeStatus.error;
-    } else {
-      homestatus = HomeStatus.loaded;
-    }
-
-    return data;
   }
 }

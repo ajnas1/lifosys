@@ -1,7 +1,7 @@
 class Svgs {
   static String get dashboard => "assets/svg/dashboard.svg";
   static String get help => "assets/svg/Help.svg";
-  static String get logout => "assets/svg/logout.svg";
+  static String get logout => "assets/svg/Logout.svg";
   static String get notification => "assets/svg/notification.svg";
   static String get settings => "assets/svg/Settings.svg";
   static String get search => "assets/svg/search.svg";

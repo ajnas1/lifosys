@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lifosys_app/utils/p_colors.dart';
 import 'package:lifosys_app/utils/svgs.dart';
 import 'package:lifosys_app/view/master_screen/main_screen.dart';
 import 'package:lifosys_app/viewModel/master_bottom_bar_viewModel.dart';
 import 'package:provider/provider.dart';
+
+import '../widget/get_nav_icon.dart';
 
 class MasterBottomBar extends StatelessWidget {
   const MasterBottomBar({super.key});
@@ -37,63 +38,28 @@ class MasterBottomBar extends StatelessWidget {
                 },
                 destinations: <Widget>[
                   NavigationDestination(
-                    icon: SvgPicture.asset(
-                      Svgs.dashboard,
-                      colorFilter:
-                          ColorFilter.mode(PColors.black, BlendMode.srcIn),
-                    ),
-                    selectedIcon: SvgPicture.asset(
-                      Svgs.dashboard,
-                      colorFilter: ColorFilter.mode(PColors.pink2, BlendMode.srcIn),
-                    ),
+                    icon: getNavIcon(icon: Svgs.dashboard,color: PColors.black),
+                    selectedIcon: getNavIcon(icon: Svgs.dashboard,color: PColors.pink2),
                     label: 'dashboard',
                   ),
                   NavigationDestination(
-                    selectedIcon: SvgPicture.asset(
-                      Svgs.help,
-                      colorFilter: ColorFilter.mode(PColors.pink2, BlendMode.srcIn),
-                    ),
-                    icon: SvgPicture.asset(
-                      Svgs.help,
-                      colorFilter:
-                          ColorFilter.mode(PColors.black, BlendMode.srcIn),
-                    ),
+                    selectedIcon: getNavIcon(icon: Svgs.help,color: PColors.pink2),
+                    icon: getNavIcon(icon: Svgs.help,color: PColors.black),
                     label: 'help',
                   ),
                   NavigationDestination(
-                    selectedIcon: SvgPicture.asset(
-                      Svgs.notification,
-                      colorFilter: ColorFilter.mode(PColors.pink2, BlendMode.srcIn),
-                    ),
-                    icon: SvgPicture.asset(
-                      Svgs.notification,
-                      colorFilter:
-                          ColorFilter.mode(PColors.black, BlendMode.srcIn),
-                    ),
+                    selectedIcon: getNavIcon(icon: Svgs.notification,color: PColors.pink2),
+                    icon: getNavIcon(icon: Svgs.notification,color: PColors.black),
                     label: 'notification',
                   ),
                   NavigationDestination(
-                    selectedIcon: SvgPicture.asset(
-                      Svgs.settings,
-                      colorFilter: ColorFilter.mode(PColors.pink2, BlendMode.srcIn),
-                    ),
-                    icon: SvgPicture.asset(
-                      Svgs.settings,
-                      colorFilter:
-                          ColorFilter.mode(PColors.black, BlendMode.srcIn),
-                    ),
+                    selectedIcon: getNavIcon(icon: Svgs.settings,color: PColors.pink2),
+                    icon: getNavIcon(icon: Svgs.settings,color: PColors.black),
                     label: 'settings',
                   ),
                   NavigationDestination(
-                    selectedIcon: SvgPicture.asset(
-                      Svgs.logout,
-                      colorFilter: ColorFilter.mode(PColors.pink2, BlendMode.srcIn),
-                    ),
-                    icon: SvgPicture.asset(
-                      Svgs.logout,
-                      colorFilter:
-                          ColorFilter.mode(PColors.black, BlendMode.srcIn),
-                    ),
+                    selectedIcon: getNavIcon(icon: Svgs.logout,color: PColors.pink2),
+                    icon: getNavIcon(icon: Svgs.logout,color: PColors.black),
                     label: 'Log out',
                   ),
                 ],
@@ -102,17 +68,17 @@ class MasterBottomBar extends StatelessWidget {
           
         ),
         body: [
-          MainScreen(),
-          Center(
+          const MainScreen(),
+          const Center(
             child: Text('Help'),
           ),
-          Center(
+          const Center(
             child: Text('notification'),
           ),
-          Center(
+          const Center(
             child: Text('settings'),
           ),
-          Center(
+          const Center(
             child: Text('logout'),
           ),
         ][value.selectedIndex],

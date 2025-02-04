@@ -5,6 +5,7 @@ class PColors {
   static Color get grey => const Color(0xFFDDDDDD);
   static Color get grey2 => const Color(0xFF919191);
   static Color get grey3 => const Color(0xFFEAEAEA);
+  static Color get grey4 => const Color(0xFFF8F8F8);
   static Color get white2 => const Color(0xFFEAEAEA);
   static Color get white => const Color(0xFFEAEAEA);
    static Color get white3 => const Color(0xFFF7F7F7);

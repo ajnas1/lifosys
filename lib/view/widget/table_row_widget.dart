@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lifosys_app/utils/svgs.dart';
 
+import '../../model/patientModel.dart';
 import '../../utils/p_colors.dart';
 import 'center_table_row_element_text.dart';
 
-TableRow tableRowWidget({required bool isMobile}) {
-  return TableRow(decoration: BoxDecoration(color: PColors.seed), children: [
+TableRow tableRowWidget({required bool isMobile,required int index,required Datum data}) {
+  return TableRow(decoration: BoxDecoration(color:index.isEven? PColors.grey4:PColors.seed), children: [
     Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -25,11 +26,11 @@ TableRow tableRowWidget({required bool isMobile}) {
         ),
       ],
     ),
-    centerTableRowElementText(title: "16"),
-    if (!isMobile) centerTableRowElementText(title: "32"),
-    if (!isMobile) centerTableRowElementText(title: "Female"),
-    if (!isMobile) centerTableRowElementText(title: "Darlene Robertson"),
-    centerTableRowElementText(title: "Kathryn Murphy"),
-    if (!isMobile) centerTableRowElementText(title: "ID: 39635"),
+    centerTableRowElementText(title: '${data.tokenNo}'),
+    if (!isMobile) centerTableRowElementText(title: data.departments),
+    if (!isMobile) centerTableRowElementText(title: '${data.consultationCharge}'),
+    if (!isMobile) centerTableRowElementText(title: data.doctor),
+    centerTableRowElementText(title: data.patientName),
+    if (!isMobile) centerTableRowElementText(title: "ID: ${data.id}"),
   ]);
 }

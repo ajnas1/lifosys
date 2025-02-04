@@ -10,7 +10,6 @@ Widget checkInStatusWidget(
     required bool isMobile}) {
       print(isMobile);
   return Container(
-    // height: 80,
     decoration: BoxDecoration(
         color: PColors.seed,
         boxShadow: [
@@ -23,7 +22,7 @@ Widget checkInStatusWidget(
         ],
         border: Border.all(color: PColors.white2),
         borderRadius: BorderRadius.circular(16)),
-    padding: EdgeInsets.all(10),
+    padding: const EdgeInsets.all(10),
     child: Row(
       children: [
         Image.asset(icon,height: isMobile?30:48,width: isMobile?30:48,),
@@ -36,10 +35,10 @@ Widget checkInStatusWidget(
               Text(
                 title,
                 style: PTextstyle.titleMedium
-                    .copyWith(color: PColors.black, fontSize: isMobile ? 10 : 16,overflow: TextOverflow.ellipsis,),maxLines: 1,
+                    .copyWith(color: PColors.black, fontSize: 16,overflow: TextOverflow.ellipsis,),maxLines: 1,
               ),
               Text(data,style:  PTextstyle.headlineLarge
-                    .copyWith(color: PColors.black, fontSize: isMobile ? 10 : 20,overflow: TextOverflow.ellipsis,),maxLines: 1,)
+                    .copyWith(color: PColors.black, fontSize: 20,overflow: TextOverflow.ellipsis,),maxLines: 1,)
             ],
           ),
         )

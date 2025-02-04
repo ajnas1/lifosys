@@ -5,5 +5,5 @@ import '../viewModel/main_screen_viewModel.dart';
 
 final List<SingleChildWidget> provider = [
   ChangeNotifierProvider(create: (context) => MasterBottomBarViewmodel()),
-  ChangeNotifierProvider(create: (context) => HomeScreenViewmodel()),
+  ChangeNotifierProvider(create: (context) => MainScreenViewmodel()),
 ];

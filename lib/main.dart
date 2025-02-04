@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:lifosys_app/services/provider.dart';
 import 'package:lifosys_app/view/master_screen/master_bottom_bar.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+ await dotenv.load(fileName: ".env");
   runApp(MultiProvider(
       providers: provider,
       child: const MyApp(),

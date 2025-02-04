@@ -27,7 +27,7 @@ class _MainScreenState extends State<MainScreen>
     super.initState();
     tabController = TabController(length: 6, vsync: this, initialIndex: 1);
     tabController.addListener(() {
-      Provider.of<HomeScreenViewmodel>(context, listen: false)
+      Provider.of<MainScreenViewmodel>(context, listen: false)
           .changeSelectedIndex(index: tabController.index);
     });
   }
@@ -35,12 +35,12 @@ class _MainScreenState extends State<MainScreen>
   @override
   Widget build(BuildContext context) {
     final selectedIndex =
-        Provider.of<HomeScreenViewmodel>(context).tabSelectedIndex;
+        Provider.of<MainScreenViewmodel>(context).tabSelectedIndex;
     return LayoutBuilder(
       builder: (context, constraints) {
         double screenWidth = constraints.maxWidth;
 
-        bool isMobile = screenWidth < 600 ? true : false;
+        bool isMobile = screenWidth < 850 ? true : false;
         return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -108,8 +108,8 @@ class _MainScreenState extends State<MainScreen>
                           controller: tabController,
                           dividerHeight: 0,
                           indicatorSize: TabBarIndicatorSize.label,
-                          indicatorColor: Colors.black,
-                          labelColor: Colors.black,
+                          indicatorColor: PColors.black,
+                          labelColor: PColors.black,
                           unselectedLabelColor: PColors.grey2,
                           tabs: [
                             Tab(
@@ -160,7 +160,7 @@ class _MainScreenState extends State<MainScreen>
               child: TabBarView(
                 controller: tabController,
                 children:  [
-                  const Center(child: const Text('Home')),
+                  const Center(child: Text('Home')),
                   CheckinScreen(isMobile: isMobile,),
                   const Center(child: Text('Doctors')),
                   const Center(child: Text('Nurses')),

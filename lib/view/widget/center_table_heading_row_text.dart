@@ -10,6 +10,8 @@ Widget centerTableHeadingRowText({required String title}) {
       child: Center(
         child: Text(
           title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: PTextstyle.titleLarge.copyWith(color: PColors.black),
         ),
       ),
