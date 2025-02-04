@@ -23,9 +23,9 @@ class MasterBottomBar extends StatelessWidget {
                 labelTextStyle:
                     WidgetStateProperty.resolveWith<TextStyle>((states) {
                   if (states.contains(WidgetState.selected)) {
-                    return TextStyle(color: PColors.pink2);
+                    return TextStyle(color: PColors.pink2,overflow: TextOverflow.ellipsis, );
                   }
-                  return TextStyle(color: PColors.black);
+                  return TextStyle(color: PColors.black,overflow: TextOverflow.ellipsis,);
                 }),
               ),
               child: NavigationBar(
